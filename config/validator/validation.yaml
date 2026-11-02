@@ -1,0 +1,86 @@
+App\Entity\Location:
+    properties:
+        city:
+            - NotBlank:
+                message: 'City cannot be blank.'
+                groups: ['create', 'edit']
+            - Length:
+                min: 2
+                max: 100
+                groups: ['create', 'edit']
+        country:
+            - NotBlank:
+                message: 'Country cannot be blank.'
+                groups: ['create', 'edit']
+            - Choice:
+                choices: [ 'PL', 'DE', 'FR', 'ES', 'IT', 'GB', 'US',]
+                message: 'Country must be one of the following: USA, Canada, Mexico.'
+                groups: ['create', 'edit']
+        latitude:
+            - NotBlank:
+                message: 'Latitude cannot be blank.'
+                groups: ['create', 'edit']
+            - Range:
+                min: -90
+                max: 90
+                groups: ['create', 'edit']
+        longitude:
+            - NotBlank:
+                message: 'Longitude cannot be blank.'
+                groups: ['create', 'edit']
+            - Range:
+                min: -180
+                max: 180
+                groups: ['create', 'edit']
+
+App\Entity\Forecast:
+    properties:
+        date:
+            - Type:
+                type: \DateTimeInterface
+                groups: [ 'create', 'edit' ]
+            - NotBlank:
+                    message: 'Date cannot be blank.'
+                    groups: [ 'create', 'edit' ]
+        temperature:
+            - NotBlank:
+                    message: 'Temperatura cannot be blank.'
+                    groups: [ 'create', 'edit' ]
+            - Range:
+                    min: -100
+                    max: 100
+                    groups: [ 'create', 'edit' ]
+        precipitation:
+            - NotBlank:
+                  message: 'Opady cannot be blank.'
+                  groups: [ 'create', 'edit' ]
+            -   Range:
+                    min: 0
+                    max: 10
+                    groups: [ 'create', 'edit' ]
+        humidity:
+            -   NotBlank:
+                    message: 'Wilgotność cannot be blank.'
+                    groups: [ 'create', 'edit' ]
+            -   Range:
+                    min: 0
+                    max: 100
+                    groups: [ 'create', 'edit' ]
+
+        cloudiness:
+            -   NotBlank:
+                    message: 'cloudiness cannot be blank.'
+                    groups: [ 'create', 'edit' ]
+            -   Range:
+                    min: 0
+                    max: 100
+                    groups: [ 'create', 'edit' ]
+
+        location:
+            -   NotBlank:
+                    message: 'Lokacja cannot be blank.'
+                    groups: [ 'create', 'edit' ]
+
+
+
+
